@@ -1,0 +1,100 @@
+<svg width="1400" height="520" viewBox="0 0 1400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F1E8"/>
+      <stop offset="1" stop-color="#E8F0EC"/>
+    </linearGradient>
+    <linearGradient id="producer" x1="60" y1="120" x2="260" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F6FEB"/>
+      <stop offset="1" stop-color="#5AA9FF"/>
+    </linearGradient>
+    <linearGradient id="kafka" x1="320" y1="120" x2="560" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E85D04"/>
+      <stop offset="1" stop-color="#FF9F45"/>
+    </linearGradient>
+    <linearGradient id="consumer" x1="620" y1="120" x2="840" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A9D8F"/>
+      <stop offset="1" stop-color="#62C2B4"/>
+    </linearGradient>
+    <linearGradient id="postgres" x1="900" y1="120" x2="1120" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6A4C93"/>
+      <stop offset="1" stop-color="#9F7CC7"/>
+    </linearGradient>
+    <linearGradient id="dbt" x1="1140" y1="120" x2="1340" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#136F63"/>
+      <stop offset="1" stop-color="#2FBF9B"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1400" height="520" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1B1F2326"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto">
+      <path d="M0 0L14 7L0 14V0Z" fill="#25324A"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #17212F; }
+      .subtitle { font: 400 16px Arial, sans-serif; fill: #42526B; }
+      .card-title { font: 700 22px Arial, sans-serif; fill: white; }
+      .card-body { font: 400 13px Arial, sans-serif; fill: rgba(255,255,255,0.92); }
+      .label { font: 700 16px Arial, sans-serif; fill: #25324A; }
+      .small { font: 400 14px Arial, sans-serif; fill: #4B5565; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="520" rx="28" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="34" y="34" width="1332" height="452" rx="28" fill="#FFFFFF" fill-opacity="0.72"/>
+  </g>
+
+  <text x="70" y="88" class="title">Streaming Data Engineering Sales Pipeline</text>
+  <text x="70" y="116" class="subtitle">Synthetic sales events flow through Kafka into PostgreSQL, then dbt builds analytics-ready models.</text>
+
+  <g>
+    <rect x="70" y="168" width="190" height="116" rx="24" fill="url(#producer)"/>
+    <text x="95" y="205" class="card-title">Python</text>
+    <text x="95" y="230" class="card-title">Producer</text>
+    <text x="95" y="252" class="card-body">uv run producer.py</text>
+    <text x="95" y="270" class="card-body">Generates synthetic</text>
+    <text x="95" y="286" class="card-body">sales events</text>
+
+    <rect x="320" y="168" width="220" height="116" rx="24" fill="url(#kafka)"/>
+    <text x="347" y="210" class="card-title">Kafka Topic</text>
+    <text x="347" y="236" class="card-body">sales_topic</text>
+    <text x="347" y="258" class="card-body">Port 9092 buffers</text>
+    <text x="347" y="276" class="card-body">streaming event payloads</text>
+
+    <rect x="620" y="168" width="200" height="116" rx="24" fill="url(#consumer)"/>
+    <text x="648" y="205" class="card-title">Python</text>
+    <text x="648" y="230" class="card-title">Consumer</text>
+    <text x="648" y="252" class="card-body">uv run consumer.py</text>
+    <text x="648" y="270" class="card-body">Loads events into</text>
+    <text x="648" y="286" class="card-body">PostgreSQL</text>
+
+    <rect x="900" y="168" width="200" height="116" rx="24" fill="url(#postgres)"/>
+    <text x="928" y="210" class="card-title">PostgreSQL</text>
+    <text x="928" y="236" class="card-body">sales_db.raw_sales</text>
+    <text x="928" y="258" class="card-body">Docker host port</text>
+    <text x="928" y="276" class="card-body">5433</text>
+
+    <rect x="1160" y="168" width="180" height="116" rx="24" fill="url(#dbt)"/>
+    <text x="1188" y="210" class="card-title">dbt Models</text>
+    <text x="1188" y="236" class="card-body">stg_sales</text>
+    <text x="1188" y="258" class="card-body">daily_sales</text>
+  </g>
+
+  <path d="M260 226H320" stroke="#25324A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M540 226H620" stroke="#25324A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M820 226H900" stroke="#25324A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M1100 226H1160" stroke="#25324A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g>
+    <circle cx="165" cy="356" r="8" fill="#1F6FEB"/>
+    <text x="185" y="362" class="label">Event schema</text>
+    <text x="315" y="362" class="small">event_id, order_id, customer_id, product_name, category, price, quantity, region, order_timestamp</text>
+  </g>
+
+  <g>
+    <circle cx="165" cy="400" r="8" fill="#6A4C93"/>
+    <text x="185" y="406" class="label">Execution flow</text>
+    <text x="315" y="406" class="small">`uv sync` → `docker compose up -d` → producer/consumer → `uv run --directory dbt_sales dbt run --profiles-dir .`</text>
+  </g>
+</svg>
