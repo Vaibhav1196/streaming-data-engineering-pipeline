@@ -36,6 +36,22 @@ Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt
 - `dbt_sales` transforms raw sales records into an analytics-ready daily sales mart.
 - `docker-compose.yml` provisions Zookeeper, Kafka, and PostgreSQL locally.
 
+## What Happens After Data Reaches Postgres?
+
+Kafka is only used to transport the live sales events. PostgreSQL stores those incoming events in the raw table `raw_sales`.
+
+dbt then runs on top of PostgreSQL to turn that raw event data into reporting-ready tables:
+
+- `stg_sales` is the staging model. It reads from `raw_sales` and gives dbt a clean base table to work from.
+- `daily_sales` is the mart model. It groups sales by day, region, and category, then calculates total orders, units sold, and revenue.
+
+In simple terms:
+
+- Producer creates events
+- Kafka moves events
+- Consumer stores events in Postgres
+- dbt transforms stored raw events into business insights
+
 ## Prerequisites
 
 - Docker Desktop
