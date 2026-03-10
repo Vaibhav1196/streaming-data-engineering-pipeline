@@ -4,6 +4,8 @@ This repository contains a local streaming sales pipeline built with Python, Kaf
 
 ## Architecture
 
+![Pipeline Architecture](docs/pipeline-architecture.svg)
+
 ```text
 Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt models
 ```
