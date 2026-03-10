@@ -32,6 +32,6 @@ services:
       POSTGRES_PASSWORD: data_eng
       POSTGRES_DB: sales_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql

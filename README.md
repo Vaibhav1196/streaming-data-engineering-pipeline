@@ -40,6 +40,13 @@ Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt
 - `uv`
 - Python 3.10+
 
+## Local Ports
+
+- Kafka: `9092`
+- PostgreSQL (Docker): `5433`
+
+This project maps PostgreSQL to `5433` on the host to avoid conflicts with a locally installed Postgres server on `5432`.
+
 ## Setup
 
 1. Create the virtual environment and install dependencies:
@@ -76,11 +83,12 @@ uv run consumer.py
 
 ## Run dbt Models
 
+Run dbt after the consumer has inserted at least a few rows into `raw_sales`.
+
 From the repository root:
 
 ```bash
-cd dbt_sales
-uv run dbt run --profiles-dir .
+uv run --directory dbt_sales dbt run --profiles-dir .
 ```
 
 ## Data Model

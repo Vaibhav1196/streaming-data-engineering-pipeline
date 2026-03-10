@@ -10,7 +10,7 @@ TOPIC_NAME = os.getenv("KAFKA_TOPIC", "sales_topic")
 BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 
 DB_HOST = os.getenv("POSTGRES_HOST", "localhost")
-DB_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
+DB_PORT = int(os.getenv("POSTGRES_PORT", "5433"))
 DB_NAME = os.getenv("POSTGRES_DB", "sales_db")
 DB_USER = os.getenv("POSTGRES_USER", "data_eng")
 DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "data_eng")

@@ -6,7 +6,7 @@ dbt_sales:
       host: localhost
       user: data_eng
       password: data_eng
-      port: 5432
+      port: 5433
       dbname: sales_db
       schema: public
       threads: 2
