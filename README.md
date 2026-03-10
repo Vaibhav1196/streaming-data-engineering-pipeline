@@ -21,8 +21,9 @@ Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt
 │   └── profiles.yml
 ├── docker-compose.yml
 ├── init.sql
+├── pyproject.toml
 ├── producer.py
-└── requirements.txt
+└── .gitignore
 ```
 
 ## Components
@@ -36,14 +37,15 @@ Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt
 ## Prerequisites
 
 - Docker Desktop
+- `uv`
 - Python 3.10+
 
 ## Setup
 
-1. Install Python dependencies:
+1. Create the virtual environment and install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   uv sync
    ```
 
 2. Start infrastructure:
@@ -63,13 +65,13 @@ Python Producer -> Kafka Topic -> Python Consumer -> PostgreSQL raw_sales -> dbt
 Start the producer:
 
 ```bash
-python producer.py
+uv run producer.py
 ```
 
 Start the consumer in a second terminal:
 
 ```bash
-python consumer.py
+uv run consumer.py
 ```
 
 ## Run dbt Models
@@ -78,7 +80,7 @@ From the repository root:
 
 ```bash
 cd dbt_sales
-dbt run --profiles-dir .
+uv run dbt run --profiles-dir .
 ```
 
 ## Data Model
@@ -107,3 +109,4 @@ dbt run --profiles-dir .
 
 - The Python applications support environment variables for Kafka and PostgreSQL connection settings.
 - Kafka topic auto-creation is disabled so topic provisioning stays explicit.
+- `uv sync` creates a local `.venv`, which is already ignored by git.
